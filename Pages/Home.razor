@@ -1,0 +1,218 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="/css/app.css">
+
+</head>
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+                <div class="nombre">
+                    <h2>Hola, Jhovanny</h2>
+                </div>
+
+                <div class="campana" @onclick="ShowNotificationModal">
+                    <i class="fas fa-bell"></i> <!-- Icono de campana -->
+                    <div class="notification-dot" style="display: @(displayDot ? "block" : "none")"></div> <!-- Punto de notificación -->
+                </div>
+                
+                @if (displayModal)
+                {
+                    <div id="notification-modal">
+                        <i class="fas fa-times close" @onclick="CloseNotificationModal"></i> <!-- Botón de cierre con icono -->
+                        <p>Tienes una nueva notificación</p> <!-- Notificación de prueba -->
+                        <p>Un cliente</p>
+                    </div>
+                }
+                
+                @code {
+                    bool displayDot = false;
+                    bool displayModal = false;
+                
+                    void ShowNotificationModal()
+                    {
+                        displayDot = true;
+                        displayModal = true;
+                    }
+                
+                    void CloseNotificationModal()
+                    {
+                        displayModal = false;
+                    }
+                }
+
+                <div class="user">
+                    <img src="img/customer01.jpg" alt="">
+                </div>
+                <p class="nombre-usuario">Jhovanni Torres</p> <!-- Nombre del usuario -->
+                <p class="titulo-usuario">Encargado</p> <!-- Título del usuario -->
+            </div>
+        
+
+            <!-- ======================= Cards ================== -->
+            <div class="cardBox">
+                <div class="input">
+                    <div class="Tnombre"> Nombre</div>
+                    <input type="text" placeholder="Escriba el nombre" id="input1">
+                    <i class="fa-regular fa-circle-xmark clear-icon" onclick="clearInput('input1')"></i>
+                </div>
+                
+                <div class="input">
+                    <div class="Tnombre"> RFC</div>
+                    <input type="text2" placeholder="Escriba el RFC" id="input2">
+                    <i class="fa-regular fa-circle-xmark clear-icon" onclick="clearInput('input2')"></i>
+                </div>
+
+                <div class="boton-buscar">
+                    <br>
+                    <button type="button" onclick="showAlert()">Buscar</button>
+                </div>
+            </div>
+
+            <!-- ================ Order Details List ================= -->
+            <div class="details">
+                <div class="recentOrders">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Fraude</td>
+                                <td>RFC</td>
+                                <td>CURP</td>
+                                <td>Nombre</td>
+                                <td>Informacion del maestro</td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>9834584958</td>
+                                <td>DIWEJC3293DN</td>
+                                <td>WHDJWJ934498RFFE3</td>
+                                <td>Emma Alejandra Pascacio Gomez</td>
+                                <td>
+                                    <div class="icon-container">
+                                        <i class="fas fa-pencil-alt"></i> <!-- Icono de lápiz -->
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>93940323</td>
+                                <td>XNIWE9NC9</td>
+                                <td>UIFNBV933RR933F</td>
+                                <td>Amado Grajales Cortez</td>
+                                <td>
+                                    <div class="icon-container">
+                                        <i class="fas fa-pencil-alt"></i> <!-- Icono de lápiz -->
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>299842221</td>
+                                <td>NCENW29NE</td>
+                                <td>HXIXHHEH822C2XJ</td>
+                                <td>Jacob Little Jhons</td>
+                                <td>
+                                    <div class="icon-container">
+                                        <i class="fas fa-pencil-alt"></i> <!-- Icono de lápiz -->
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>983927212</td>
+                                <td>JDC92CM92C2</td>
+                                <td>CJIDJ93ICN39</td>
+                                <td>Paula Sandoval Ruiz</td>
+                                <td>
+                                    <div class="icon-container">
+                                        <i class="fas fa-pencil-alt"></i> <!-- Icono de lápiz -->
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Star Refrigerator</td>
+                                <td>$1200</td>
+                                <td>Paid</td>
+                                <td><span class="status delivered">Delivered</span></td>
+                                <td>
+                                    <div class="icon-container">
+                                        <i class="fas fa-pencil-alt"></i> <!-- Icono de lápiz -->
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Dell Laptop</td>
+                                <td>$110</td>
+                                <td>Due</td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td>
+                                    <div class="icon-container">
+                                        <i class="fas fa-pencil-alt"></i> <!-- Icono de lápiz -->
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Apple Watch</td>
+                                <td>$1200</td>
+                                <td>Paid</td>
+                                <td><span class="status return">Return</span></td>
+                                <td>
+                                    <div class="icon-container">
+                                        <i class="fas fa-pencil-alt"></i> <!-- Icono de lápiz -->
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Addidas Shoes</td>
+                                <td>$620</td>
+                                <td>Due</td>
+                                <td><span class="status inProgress">In Progress</span></td>
+                                <td>
+                                    <div class="icon-container">
+                                        <i class="fas fa-pencil-alt"></i> <!-- Icono de lápiz -->
+                                    </div>
+                                </td> 
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ================= New Customers ================ -->
+            </div>
+        </div>
+    </div>
+
+    <!-- =========== Scripts =========  -->
+    <script src="/JS/main.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

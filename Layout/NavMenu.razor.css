@@ -1,0 +1,677 @@
+
+
+/* =============== Globals ============== */
+* {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #282826;
+  --white: #EFF5FF;
+  --gray: #f5f5f5;
+  --black1: #222;
+  --black2: #999;
+}
+
+
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+/* =============== Navigation ================ */
+.inicio-icon {
+  margin-left: 100px; /* Mueve el icono un poco a la derecha */
+  margin-top: 22px; /* Mueve el icono un poco hacia abajo */
+}
+.usuario-icon {
+  margin-left: 82px; /* Mueve el icono un poco a la derecha */
+  margin-top: 22px; /* Mueve el icono un poco hacia abajo */
+}
+.adm-icon {
+  margin-left: 38px; /* Mueve el icono un poco a la derecha */
+  margin-top: 22px; /* Mueve el icono un poco hacia abajo */
+}
+.reportes-icon {
+  margin-left: 70px; /* Mueve el icono un poco a la derecha */
+  margin-top: 22px; /* Mueve el icono un poco hacia abajo */
+}
+.prestamos-icon {
+  margin-left: 59px; /* Mueve el icono un poco a la derecha */
+  margin-top: 22px; /* Mueve el icono un poco hacia abajo */
+}
+.administracion-icon {
+  margin-left: 27px; /* Mueve el icono un poco a la derecha */
+  margin-top: 22px; /* Mueve el icono un poco hacia abajo */
+}
+.mobile-icon {
+  margin-left: 85px; /* Mueve el icono un poco a la derecha */
+  margin-top: 22px; /* Mueve el icono un poco hacia abajo */
+}
+.confi-icon {
+  margin-left: 33px; /* Mueve el icono un poco a la derecha */
+  margin-top: 22px; /* Mueve el icono un poco hacia abajo */
+}
+.large-logo {
+  display: block;
+  width: 130px; /* Ajusta el ancho de la imagen grande */
+  height: auto; /* Ajusta la altura de la imagen grande */
+  margin-left: 32px; /* Mueve la imagen un poco a la derecha */
+  margin-top: 30px; /* Mueve la imagen un poco hacia abajo */
+}
+
+.small-logo {
+  display: none;
+  width: 50px; /* Ajusta el ancho de la imagen pequeña */
+  height: auto; /* Ajusta la altura de la imagen pequeña */
+  margin-right: 5px; /* Mueve la imagen un poco a la derecha */
+  margin-top: 5px; /* Mueve la imagen un poco hacia abajo */
+}
+.large-logo {
+  display: block;
+}
+
+.small-logo {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .large-logo {
+    display: none;
+  }
+
+  .small-logo {
+    display: block;
+  }
+}
+.navigation {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background: var(--blue);
+  border-left: 10px solid var(--blue);
+  transition: 0.5s;
+  overflow: hidden;
+}
+.navigation.active {
+  width: 80px;
+}
+
+.navigation ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navigation ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered {
+  background-color: var(--white);
+}
+
+.navigation ul li:nth-child(1) {
+  margin-bottom: 40px;
+  pointer-events: none;
+}
+
+.navigation ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: var(--white);
+}
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+  color: var(--blue);
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 75px;
+  text-align: center;
+}
+.navigation ul li a .icon ion-icon {
+  font-size: 1.75rem;
+}
+
+.navigation ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+
+/* --------- curve outside ---------- */
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px var(--white);
+  pointer-events: none;
+}
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -35px 0 10px var(--white);
+  pointer-events: none;
+}
+
+/* ===================== Main ===================== */
+.main {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: var(--white);
+  transition: 0.5s;
+}
+.main.active {
+  width: calc(100% - 80px);
+  left: 80px;
+}
+
+.topbar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .nombre {
+    display: none;
+  }
+}
+
+.user {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  left: -130px;
+}
+
+.user img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.campana {
+  position: relative;
+  left: 155px;
+  top: -14px;
+}
+
+
+/* Cuando la pantalla es de 1500px o menos (típicamente tablets en modo paisaje), ajusta la posición left de .campana a 0px */
+@media screen and (max-width: 1500px) {
+  .campana {
+    left: 0px;
+  }
+}
+
+.fas.fa-bell {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  cursor: pointer;
+}
+
+.campana .fas.fa-bell {
+  font-size: 1.5em; 
+}
+
+.notification-dot {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 10px;
+  height: 10px;
+  background-color: #F00;
+  border-radius: 50%;
+  display: block; /* Muestra el punto de notificación por defecto */
+}
+#notification-modal {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 200px;
+    height: 100px;
+    background-color: #FFF;
+    border: 1px solid #000;
+    display: none; /* Oculta el modal por defecto */
+    z-index: 9999; /* Asegura que el modal siempre esté en la parte superior */
+    border-radius: 10px;
+}
+
+#notification-modal p {
+    border-bottom: 1px solid #ddd; /* Agrega una línea divisoria entre las notificaciones */
+    padding: 10px; /* Agrega un poco de espacio alrededor de las notificaciones */
+    background-color: #f9f9f9; /* Cambia el color de fondo de las notificaciones */
+    margin: 0; /* Elimina los márgenes predeterminados */
+    border-radius: 10px;
+    transition: background-color 0.3s; /* Agrega una transición suave al cambiar el color de fondo */
+}
+
+#notification-modal p:hover {
+    background-color: #e0e0e0; /* Cambia el color de fondo de las notificaciones al pasar el cursor por encima */
+}
+
+#notification-modal p:last-child {
+    border-bottom: none; /* Elimina la línea divisoria de la última notificación */
+}
+
+#notification-modal .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #aaa; /* Cambia el color del botón de cierre */
+}
+
+#notification-modal .close:hover {
+    color: #000; /* Cambia el color del botón de cierre cuando se pasa el cursor por encima */
+}
+.nombre-usuario {
+  position: absolute;
+  right: 20px; 
+  top: 9px;
+}
+
+.titulo-usuario {
+  position: absolute;
+  right: 72px; 
+  top: 30px; 
+  font-size: 0.8em;
+  opacity: 0.5; /* Hace el texto semi-transparente */
+}
+/* ======================= Cards ====================== */
+.cardBox {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px;
+}
+/*Inputs */
+.Tnombre {
+  position: relative;
+  width: 100%;
+  padding: 4px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px;
+  left: 10px;
+}
+.input {
+  position: relative;
+}
+.clear-icon {
+  display: none;
+  position: absolute;
+  top: 70%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  border-radius: 20px;
+  color: #ffffff;
+  font-size: 1.5em;
+}
+.input input[type="text"] {
+  width: 105%;
+  padding: 13px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: #282826;
+  color: #fff; 
+}
+
+.input input[type="text"]:focus {
+  border-color: #FF6600;
+  box-shadow: 0 0 10px #FF6600;
+}
+.input input[type="text2"] {
+  width: 100%;
+  padding: 13px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: #282826;
+  color: #fff; 
+}
+
+.input input[type="text2"]:focus {
+  border-color: #FF6600;
+  box-shadow: 0 0 10px #FF6600;
+}
+.boton-buscar {
+  width: 100%;
+  display: grid;
+}
+.boton-buscar button {
+  width: 40%; 
+  padding: 9px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: #FF6600;
+  color: #fff; /* Cambia el color del texto a blanco para que sea visible en el fondo oscuro */
+  cursor: pointer; /* Cambia el cursor a un puntero cuando se pasa por encima del botón */
+  transition: all 0.3s ease;
+  font-size: 1em;
+}
+
+.boton-buscar button:hover {
+  background-color: #FF3300; /* Cambia el color de fondo cuando se pasa por encima del botón */
+}
+.cardBox .card {
+  position: relative;
+  background: var(--white);
+  padding: 5px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+
+.cardBox .card:hover {
+  background: var(--blue);
+}
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .iconBx {
+  color: var(--white);
+}
+
+/* ================== Order Details List ============== */
+.details {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-gap: 30px;
+}
+
+.details .recentOrders {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  background: white;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 0.5px solid #282826;
+  overflow-x: auto;
+}
+.details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0px;
+  border-radius: 40px;
+}
+.details table thead {
+  background-color: #282826;
+  color: #fff;
+  top : -20px;
+  border-radius: 40px;
+  text-align: center;
+}
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fas.fa-pencil-alt {
+  padding: 5px;
+  background-color: #fff1d7;
+  border: 1px solid #fec453;
+  border-radius: 10px;
+  font-size: 25px;
+}
+
+.details table tr td {
+  border-right: 1px solid #ffffff; /* Agrega una línea a la derecha de cada td */
+}
+.details table tbody tr td {
+  border-right: 1px solid #fff1d7;
+}
+
+
+.details table tr td:last-child {
+  border-right: none; /* Elimina la línea a la derecha del último td */
+  text-align: end;
+}
+.details table thead td {
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  align-items: center;
+  font-size: 14px;
+}
+.details .recentOrders table tr {
+  color: var(--black1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.details .recentOrders table tr:last-child {
+  border-bottom: none;
+}
+
+.details .recentOrders table tbody tr:hover {
+  background: #f2f2f2;
+  color: var(--black1);
+}
+.details .recentOrders table tr td {
+  padding: 10px;
+}
+.details .recentOrders table tr td:last-child {
+  text-align: end;
+}
+.details .recentOrders table tr td:nth-child(2) {
+  text-align: end;
+}
+.details .recentOrders table tr td:nth-child(3) {
+  text-align: center;
+}
+/*Estilo de la alerta */
+.alert {
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1em;
+  border: 1px solid #000;
+  background-color: #fff;
+  text-align: center;
+  z-index: 1000;
+  border-radius: 10px;
+  padding: 1em;
+  width: 80%;
+  height: auto;
+  max-width: 380px;
+}
+
+.alert i {
+  font-size: 2em;
+  color: #f00;
+}
+.fas.fa-exclamation-triangle {
+  border-radius: 20%;
+  padding: 10px;
+  background-color: #ffb7b7;
+  color: #f00;
+}
+
+.alert p {
+  margin: 1em 1em;
+}
+
+.alert button {
+  padding: 0.7em 1em;
+  border-radius: 10px;
+  background-color: #F00;
+  width: 90%;
+  color: #fff;
+  font-size: medium;
+}
+.alert .button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+}
+
+.alert .button-container button:first-child {
+  margin-right: 20px;
+  background-color: transparent; /* Cambia el color de fondo a transparente */
+  border: 1px solid #808080; /* Agrega un borde gris */
+  color: #000;
+}
+
+.alert .button-container button:last-child {
+  background-color: #FFAA04; /* Cambia el color de fondo del segundo botón a verde */
+  border: none; /* Elimina el borde del segundo botón */
+}
+.alert .icon {
+  background-color: #fff1d7; /* Cambia el color de fondo a rojo */
+  border-radius: 10px; /* Hace que el icono sea redondo */
+  padding: 10px; /* Agrega espacio alrededor del icono */
+  color: #ffaa04;
+}
+
+/* Estilos para pantallas de tabletas y móviles */
+@media (max-width: 768px) {
+  .alert {
+    top: 50%;
+    width: 85%; /* Aumenta el ancho del modal a 85% */
+  }
+
+  .alert .button-container {
+    flex-direction: column; /* Cambia la dirección de los botones a columna */
+    align-items: stretch; /* Asegura que los botones se estiren para llenar el contenedor */
+  }
+
+  .alert .button-container button {
+    margin-bottom: 10px; /* Añade margen debajo de los botones */
+  }
+}
+/* ====================== Responsive Design ========================== */
+@media (max-width: 991px) {
+  .navigation {
+    left: -300px;
+  }
+  .navigation.active {
+    width: 300px;
+    left: 0;
+  }
+  .main {
+    width: 100%;
+    left: 0;
+  }
+  .main.active {
+    left: 300px;
+  }
+  .cardBox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .details {
+    grid-template-columns: 1fr;
+  }
+  .recentOrders {
+    overflow-x: auto;
+  }
+  .status.inProgress {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardBox {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .cardHeader h2 {
+    font-size: 20px;
+  }
+  .user {
+    min-width: 40px;
+  }
+  .navigation {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .navigation.active {
+    width: 100%;
+    left: 0;
+  }
+  .toggle {
+    z-index: 10001;
+  }
+  .main.active .toggle {
+    color: #fff;
+    position: fixed;
+    right: 0;
+    left: initial;
+  }
+}
